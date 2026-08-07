@@ -1,0 +1,1 @@
+static const float GRAVITY= -9.81;

@@ -1,0 +1,4 @@
+/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/glad.dir
+/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir
+/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/edit_cache.dir
+/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/rebuild_cache.dir
