@@ -342,7 +342,7 @@
 			[
 				1
 			],
-			"path" : "include/core/application.h",
+			"path" : "include/core/application.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -351,7 +351,7 @@
 			[
 				1
 			],
-			"path" : "include/core/constants.h",
+			"path" : "include/core/constants.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -360,7 +360,7 @@
 			[
 				1
 			],
-			"path" : "include/core/player.h",
+			"path" : "include/core/player.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -389,7 +389,7 @@
 			[
 				1
 			],
-			"path" : "include/core/shader.h",
+			"path" : "include/core/shader.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -408,7 +408,7 @@
 			[
 				1
 			],
-			"path" : "include/core/chunk.h",
+			"path" : "include/core/chunk.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -427,7 +427,7 @@
 			[
 				1
 			],
-			"path" : "include/core/mesh.h",
+			"path" : "include/core/mesh.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],
