@@ -1,6 +1,7 @@
 #include "core/application.h"
 
 #include "core/player.h"
+#include "core/chunk.h"
 
 void Application::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -53,7 +54,10 @@ void Application::cleanup() {
 void Application::run(){
     init();
 
-    Player player(glm::vec3(0.0f, 0.0f, 0.0f));
+    Chunk chunk(glm::vec2(0.0f, 0.0f));
+
+    Player player(glm::vec2(0.0f, 0.0f));
+
 
     while (!glfwWindowShouldClose(window))
     {
@@ -65,11 +69,12 @@ void Application::run(){
         player.update(1);
         player.input(window);
         player.draw();
-        std::cout << player.getPos().x << "\n";
+
+        chunk.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-    }
+    } 
 
     cleanup();
 }

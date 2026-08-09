@@ -9,5 +9,5 @@
 6	710	1786218795445206622	CMakeFiles/Cerraria.dir/src/core/block.cpp.o	d2787a5f8a1b557
 7	496	1786230379731699489	CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o	16c308b1d02d52f4
 6	500	1786229589387990885	CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o	6f0dc2649708efe8
-9	817	1786242689133671517	build.ninja	c613de4c82b8294f
-9	817	1786242689132723147	/Users/sasha/Documents/GitHub/Cerraria/build/cmake_install.cmake	c613de4c82b8294f
+9	817	1786244616470125459	build.ninja	c613de4c82b8294f
+9	817	1786244616469275510	/Users/sasha/Documents/GitHub/Cerraria/build/cmake_install.cmake	c613de4c82b8294f

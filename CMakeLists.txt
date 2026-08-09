@@ -21,7 +21,11 @@ add_executable(Cerraria src/core/main.cpp
     include/core/player.h
     src/core/player.cpp
     src/core/shader.cpp
-    include/core/shader.h)
+    include/core/shader.h
+    src/core/chunk.cpp
+    include/core/chunk.h
+    src/core/mesh.cpp
+    include/core/mesh.h)
 target_include_directories(Cerraria PRIVATE include external/stb)
 target_link_libraries(Cerraria PRIVATE
     glad

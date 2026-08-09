@@ -14,7 +14,7 @@ class Application {
     private:
         GLFWwindow* window;
         int width = 800;
-        int height = 600;
+        int height = 800;
         std::string name = "Cerraria";
 
         std::string loadShader(const std::string &path);
