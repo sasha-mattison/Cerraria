@@ -16,16 +16,16 @@ target_include_directories(glad PUBLIC external/glad/include)
 
 add_executable(Cerraria src/core/main.cpp
     src/core/application.cpp
-    include/core/application.h
-    include/core/constants.h
-    include/core/player.h
+    include/core/application.hpp
+    include/core/constants.hpp
+    include/core/player.hpp
     src/core/player.cpp
     src/core/shader.cpp
-    include/core/shader.h
+    include/core/shader.hpp
     src/core/chunk.cpp
-    include/core/chunk.h
+    include/core/chunk.hpp
     src/core/mesh.cpp
-    include/core/mesh.h)
+    include/core/mesh.hpp)
 target_include_directories(Cerraria PRIVATE include external/stb)
 target_link_libraries(Cerraria PRIVATE
     glad

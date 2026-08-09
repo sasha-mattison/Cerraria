@@ -1,7 +1,7 @@
-#include "core/application.h"
+#include "core/application.hpp"
 
-#include "core/player.h"
-#include "core/chunk.h"
+#include "core/player.hpp"
+#include "core/chunk.hpp"
 
 void Application::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
     glViewport(0, 0, width, height);

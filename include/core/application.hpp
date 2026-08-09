@@ -2,12 +2,16 @@
 
 #include <glad/gl.h>
 
-#include "core/shader.h"
+#include "core/shader.hpp"
 #include <string>
 #include <vector>
 #include <fstream>
 #include <sstream>
 #include <iostream>
+
+struct World {
+
+};
 
 class Application {
 

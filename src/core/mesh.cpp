@@ -1,5 +1,5 @@
 #define STB_IMAGE_IMPLEMENTATION
-#include "core/mesh.h"
+#include "core/mesh.hpp"
 
 Mesh::Mesh() {}
 

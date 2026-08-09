@@ -1,10 +1,10 @@
 #pragma once
 
-#include "core/mesh.h"
+#include "core/mesh.hpp"
 
 
 #include <glm/glm.hpp>
-#include "core/constants.h"
+#include "core/constants.hpp"
 #include <algorithm>
 #include <vector>
 
