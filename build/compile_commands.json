@@ -28,5 +28,17 @@
   "command": "/usr/bin/clang++ -DASSETS_DIR=\\\"/Users/sasha/Documents/GitHub/Cerraria/assets/\\\" -DGL_SILENCE_DEPRECATION -I/Users/sasha/Documents/GitHub/Cerraria/include -I/Users/sasha/Documents/GitHub/Cerraria/external/stb -I/Users/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /opt/homebrew/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /opt/homebrew/include/freetype2 -g -std=gnu++17 -arch arm64 -o CMakeFiles/Cerraria.dir/src/core/shader.cpp.o -c /Users/sasha/Documents/GitHub/Cerraria/src/core/shader.cpp",
   "file": "/Users/sasha/Documents/GitHub/Cerraria/src/core/shader.cpp",
   "output": "/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/shader.cpp.o"
+},
+{
+  "directory": "/Users/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/clang++ -DASSETS_DIR=\\\"/Users/sasha/Documents/GitHub/Cerraria/assets/\\\" -DGL_SILENCE_DEPRECATION -I/Users/sasha/Documents/GitHub/Cerraria/include -I/Users/sasha/Documents/GitHub/Cerraria/external/stb -I/Users/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /opt/homebrew/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /opt/homebrew/include/freetype2 -g -std=gnu++17 -arch arm64 -o CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o -c /Users/sasha/Documents/GitHub/Cerraria/src/core/chunk.cpp",
+  "file": "/Users/sasha/Documents/GitHub/Cerraria/src/core/chunk.cpp",
+  "output": "/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o"
+},
+{
+  "directory": "/Users/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/clang++ -DASSETS_DIR=\\\"/Users/sasha/Documents/GitHub/Cerraria/assets/\\\" -DGL_SILENCE_DEPRECATION -I/Users/sasha/Documents/GitHub/Cerraria/include -I/Users/sasha/Documents/GitHub/Cerraria/external/stb -I/Users/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /opt/homebrew/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /opt/homebrew/include/freetype2 -g -std=gnu++17 -arch arm64 -o CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o -c /Users/sasha/Documents/GitHub/Cerraria/src/core/mesh.cpp",
+  "file": "/Users/sasha/Documents/GitHub/Cerraria/src/core/mesh.cpp",
+  "output": "/Users/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o"
 }
 ]

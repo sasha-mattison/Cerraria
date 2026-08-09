@@ -1,8 +1,13 @@
 # ninja log v7
 1	214	1786056724943615764	CMakeFiles/glad.dir/external/glad/src/glad.c.o	fec8ce084fdf9e65
 215	270	1786056725157452323	libglad.a	2551c97e3ef3e47
-5	659	1786068206753515242	CMakeFiles/Cerraria.dir/src/core/main.cpp.o	cc89ba863279c99b
-56	778	1786114731265686034	CMakeFiles/Cerraria.dir/src/core/application.cpp.o	7d946d625a9c482f
-472	517	1786114780526319384	Cerraria	9a5acd6c48e586a7
-5	471	1786114780059887600	CMakeFiles/Cerraria.dir/src/core/player.cpp.o	cc869f3c534d38c1
+5	393	1786151341567963118	CMakeFiles/Cerraria.dir/src/core/main.cpp.o	cc89ba863279c99b
+6	561	1786230774355210345	CMakeFiles/Cerraria.dir/src/core/application.cpp.o	7d946d625a9c482f
+756	884	1786237043757280037	Cerraria	a7ff149c92e05e5d
+14	756	1786237043014562166	CMakeFiles/Cerraria.dir/src/core/player.cpp.o	cc869f3c534d38c1
 4	385	1786067271648855597	CMakeFiles/Cerraria.dir/src/core/shader.cpp.o	cf59aa03c2ed9aac
+6	710	1786218795445206622	CMakeFiles/Cerraria.dir/src/core/block.cpp.o	d2787a5f8a1b557
+7	496	1786230379731699489	CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o	16c308b1d02d52f4
+6	500	1786229589387990885	CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o	6f0dc2649708efe8
+9	817	1786242689133671517	build.ninja	c613de4c82b8294f
+9	817	1786242689132723147	/Users/sasha/Documents/GitHub/Cerraria/build/cmake_install.cmake	c613de4c82b8294f

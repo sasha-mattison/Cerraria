@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/opt/homebrew/lib/libglfw.3.4.dylib"
+			"path" : "/opt/homebrew/lib/libglfw.3.5.dylib"
 		}
 	],
 	"backtrace" : 5,
@@ -63,7 +63,7 @@
 	"imported" : true,
 	"local" : true,
 	"name" : "glfw",
-	"nameOnDisk" : "libglfw.3.4.dylib",
+	"nameOnDisk" : "libglfw.3.5.dylib",
 	"paths" : 
 	{
 		"build" : ".",
