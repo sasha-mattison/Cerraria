@@ -38,6 +38,7 @@ Nothin yet
 ```bash
 sudo apt update
 sudo apt install build-essential cmake libraylib-dev libx11-dev libxi-dev libgl1-mesa-dev
+```
 
 #### MacOS 
 
