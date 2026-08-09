@@ -2,9 +2,10 @@
 
 A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 
-![C++](https://img.shields.org/badge/C++-17%2F20-blue.svg)
-![License](https://img.shields.org/badge/License-MIT-green.svg)
-![Platform](https://img.shields.org/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg)
+![C++](https://img.shields.io/badge/C%2B%2B-17%2F20-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg)
+
 
 ---
 
@@ -24,7 +25,6 @@ Nothin yet
 
 - **Language:** C++17 or higher
 - **Build System:** CMake (>= 3.15)
-- **Graphics/Input/Audio Engine:** [Raylib](https://www.raylib.com/) (or SFML/SDL2 depending on configuration)
 - **Compiler:** `gcc` (>= 9), `clang` (>= 10), or MSVC (Visual Studio 2019+)
 
 ---
