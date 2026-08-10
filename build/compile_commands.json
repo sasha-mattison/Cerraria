@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-gcc -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -g -o CMakeFiles/glad.dir/external/glad/src/glad.c.o -c /home/sasha/Documents/GitHub/Cerraria/external/glad/src/glad.c",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/external/glad/src/glad.c",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/glad.dir/external/glad/src/glad.c.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/main.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/main.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/main.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/main.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/application.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/application.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/application.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/application.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/player.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/player.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/player.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/player.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/shader.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/shader.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/shader.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/shader.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/chunk.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/chunk.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/mesh.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/mesh.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o"
+},
+{
+  "directory": "/home/sasha/Documents/GitHub/Cerraria/build",
+  "command": "/usr/bin/aarch64-redhat-linux-g++ -DASSETS_DIR=\\\"/home/sasha/Documents/GitHub/Cerraria/assets/\\\" -I/home/sasha/Documents/GitHub/Cerraria/include -I/home/sasha/Documents/GitHub/Cerraria/external/stb -I/home/sasha/Documents/GitHub/Cerraria/external/glad/include -isystem /usr/include/freetype2 -g -std=gnu++17 -o CMakeFiles/Cerraria.dir/src/core/camera.cpp.o -c /home/sasha/Documents/GitHub/Cerraria/src/core/camera.cpp",
+  "file": "/home/sasha/Documents/GitHub/Cerraria/src/core/camera.cpp",
+  "output": "/home/sasha/Documents/GitHub/Cerraria/build/CMakeFiles/Cerraria.dir/src/core/camera.cpp.o"
+}
+]

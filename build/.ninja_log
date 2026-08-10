@@ -1,0 +1,13 @@
+# ninja log v7
+0	396	1786401626286650406	CMakeFiles/glad.dir/external/glad/src/glad.c.o	a9b09f9fa0a500ea
+0	432	1786401626287650414	CMakeFiles/Cerraria.dir/src/core/main.cpp.o	2bee5e811c1408d0
+1	548	1786401626288149919	CMakeFiles/Cerraria.dir/src/core/player.cpp.o	21bcab27d266abc5
+1	587	1786401626288075543	CMakeFiles/Cerraria.dir/src/core/application.cpp.o	aa31a43e0da49f96
+1	597	1786401626288259253	CMakeFiles/Cerraria.dir/src/core/chunk.cpp.o	eed0d7de43187ec0
+1	637	1786401626288309462	CMakeFiles/Cerraria.dir/src/core/mesh.cpp.o	e0e346f513ec7c0b
+1	91	1786401690369101948	libglad.a	ace479962c49eec4
+1	206	1786401690370962697	CMakeFiles/Cerraria.dir/src/core/shader.cpp.o	ef92cde8572d87e5
+2	289	1786401690371033655	CMakeFiles/Cerraria.dir/src/core/camera.cpp.o	3e13cdc19c5d0087
+1	319	1786401690370794655	CMakeFiles/Cerraria.dir/src/core/main.cpp.o	2bee5e811c1408d0
+1	332	1786401690370879947	CMakeFiles/Cerraria.dir/src/core/application.cpp.o	aa31a43e0da49f96
+332	398	1786401690700919543	Cerraria	82357f79d48bae0f
