@@ -17,7 +17,7 @@ A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 
 ## Features
 
-Nothin yet
+There is a window
 
 ---
 
