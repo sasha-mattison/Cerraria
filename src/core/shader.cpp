@@ -69,3 +69,7 @@ void Shader::use() {
     else
         glUseProgram(shaderProgram);
 }
+
+GLuint Shader::getProgram() {
+    return shaderProgram;
+}

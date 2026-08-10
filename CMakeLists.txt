@@ -25,7 +25,9 @@ add_executable(Cerraria src/core/main.cpp
     src/core/chunk.cpp
     include/core/chunk.hpp
     src/core/mesh.cpp
-    include/core/mesh.hpp)
+    include/core/mesh.hpp
+    src/core/camera.cpp
+    include/core/camera.hpp)
 target_include_directories(Cerraria PRIVATE include external/stb)
 target_link_libraries(Cerraria PRIVATE
     glad

@@ -11,6 +11,43 @@ Block::Block(glm::vec2 pos) : position(pos) {
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
 }
 
+std::vector<Block> Chunk::getNeighbors(
+    const Block& target,
+    const std::vector<Block>& blocks)
+{
+    std::vector<Block> neighbors;
+
+    auto it = std::find_if(
+        blocks.begin(),
+        blocks.end(),
+        [&target](const Block& block) {
+            return block.position == target.position;
+        }
+    );
+
+    if (it == blocks.end())
+        return neighbors;
+
+    const std::size_t index = std::distance(blocks.begin(), it);
+
+    const std::size_t x = index % CHUNK_SIZE;
+    const std::size_t y = index / CHUNK_SIZE;
+
+    if (x > 0)
+        neighbors.push_back(blocks[index - 1]);
+
+    if (x + 1 < CHUNK_SIZE)
+        neighbors.push_back(blocks[index + 1]);
+
+    if (y > 0)
+        neighbors.push_back(blocks[index - CHUNK_SIZE]);
+
+    if (y + 1 < CHUNK_SIZE)
+        neighbors.push_back(blocks[index + CHUNK_SIZE]);
+
+    return neighbors;
+}
+
 Chunk::Chunk(glm::vec2 pos) : position(pos) {
     blocks.reserve(pow(CHUNK_SIZE, 2));
     initChunk();

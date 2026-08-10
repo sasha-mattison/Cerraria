@@ -11,12 +11,13 @@ void Vertex::updateVertex(glm::vec2 pos) {
 
 Player::Player(glm::vec2 pos) : position(pos), velocity(0), acceleration(0) {
 
-    vertices.push_back(Vertex(glm::vec2(-0.5f + pos.x, -0.5f + pos.y), glm::vec2(0.0f, 0.0f)));
-    vertices.push_back(Vertex(glm::vec2(0.5f + pos.x, -0.5f + pos.y), glm::vec2(1.0f, 0.0f)));
-    vertices.push_back(Vertex(glm::vec2(0.5f + pos.x, 0.5f + pos.y), glm::vec2(1.0f, 1.0f)));
-    vertices.push_back(Vertex(glm::vec2(-0.5f + pos.x, -0.5f + pos.y), glm::vec2(0.0f, 0.0f)));
-    vertices.push_back(Vertex(glm::vec2(-0.5f + pos.x, 0.5f + pos.y), glm::vec2(0.0f, 1.0f)));
-    vertices.push_back(Vertex(glm::vec2(0.5f + pos.x, 0.5f + pos.y), glm::vec2(1.0f, 1.0f)));
+vertices.push_back(Vertex(glm::vec2(100.0f, 100.0f), glm::vec2(0.0f, 0.0f)));
+vertices.push_back(Vertex(glm::vec2(200.0f, 100.0f), glm::vec2(1.0f, 0.0f)));
+vertices.push_back(Vertex(glm::vec2(200.0f, 200.0f), glm::vec2(1.0f, 1.0f)));
+
+vertices.push_back(Vertex(glm::vec2(100.0f, 100.0f), glm::vec2(0.0f, 0.0f)));
+vertices.push_back(Vertex(glm::vec2(100.0f, 200.0f), glm::vec2(0.0f, 1.0f)));
+vertices.push_back(Vertex(glm::vec2(200.0f, 200.0f), glm::vec2(1.0f, 1.0f)));
 
     drawSetup();
 }
@@ -42,17 +43,17 @@ void Player::update(float tick) {
 
 void Player::input(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        position.x -= 0.01f;
+        position.x -= 1.0f;
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        position.x += 0.01f;
+        position.x += 1.0f;
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        position.y += 0.01f;
+        position.y += 1.0f;
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        position.y -= 0.01f;
+        position.y -= 1.0f;
     }
 }
 

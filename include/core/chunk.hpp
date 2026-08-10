@@ -3,6 +3,9 @@
 #include "core/mesh.hpp"
 #include <glm/glm.hpp>
 #include <vector>
+#include <algorithm>
+#include <iterator>
+#include <list>
 
 struct BlockVertex {
     glm::vec2 position;
@@ -35,6 +38,8 @@ private:
     void initChunk();
     void drawSetup();
     void buildMesh();
+
+    std::vector<Block> getNeighbors(const Block& target, const std::vector<Block>& blocks);
 
 public:
     Chunk(glm::vec2 pos);

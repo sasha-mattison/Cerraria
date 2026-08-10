@@ -16,9 +16,10 @@ class Shader {
         const std::string fShaderpath = "shaders/fragment.glsl";
 
         std::string
-        loadShader(const std::string &path);
+        loadShader(const std::string& path);
 
     public:
         void use();
         void init();
+        GLuint getProgram();
 };

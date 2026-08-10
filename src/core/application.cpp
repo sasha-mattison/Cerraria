@@ -3,8 +3,16 @@
 #include "core/player.hpp"
 #include "core/chunk.hpp"
 
-void Application::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
+void Application::framebufferSizeCallback(GLFWwindow* window, int width, int height) {
+    Application* app =
+        static_cast<Application*>(glfwGetWindowUserPointer(window));
+
     glViewport(0, 0, width, height);
+
+    app->camera.setProjection(width, height);
+    app->camera.applyProjection(app->shader);
+    app->aspectRatio = static_cast<float>(width)/height;
+    app->applyScaling();
 }
 
 void Application::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
@@ -18,6 +26,11 @@ void Application::keyCallback(GLFWwindow *window, int key, int scancode, int act
     default:
         break;
     }
+}
+
+void Application::applyScaling() {
+    GLint scaleLoc = glGetUniformLocation(shader.getProgram(), "scale");
+    glUniform1f(scaleLoc, aspectRatio);
 }
 
 void Application::init() {
@@ -38,12 +51,21 @@ void Application::init() {
         return;
     }
 
-    glViewport(0, 0, width, height);
-
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
     glfwSetKeyCallback(window, keyCallback);
     
     shader.init();
+
+    camera.setProjection(width, height);
+    camera.applyProjection(shader);
+    applyScaling();
+
+    #ifdef __APPLE__
+        glfwGetFramebufferSize(window, &width, &height); //ts fixes bullshit problem on MacOS
+    #endif
+
+    glViewport(0, 0, width, height);
+
 }
 
 void Application::cleanup() {
@@ -54,10 +76,11 @@ void Application::cleanup() {
 void Application::run(){
     init();
 
-    Chunk chunk(glm::vec2(0.0f, 0.0f));
+    Chunk chunk(glm::vec2(100.0f, 100.0f));
 
     Player player(glm::vec2(0.0f, 0.0f));
 
+    camera.applyProjection(shader);
 
     while (!glfwWindowShouldClose(window))
     {
