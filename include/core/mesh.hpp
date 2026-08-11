@@ -1,10 +1,16 @@
 #pragma once
 
 #include "stb_image.h"
+#include "constants.hpp"
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <string>
+
+enum class Texture {
+    PLAYER,
+    CRATE
+};
 
 class Mesh {
 
@@ -15,7 +21,7 @@ class Mesh {
 
     public:
         Mesh();
-        Mesh(int TexID);
+        Mesh(Texture type);
         Mesh(std::string path);
         GLuint getTexture();
         // "assets/textues/image.png"

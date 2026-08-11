@@ -11,10 +11,7 @@ Block::Block(glm::vec2 pos) : position(pos) {
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
 }
 
-std::vector<Block> Chunk::getNeighbors(
-    const Block& target,
-    const std::vector<Block>& blocks)
-{
+std::vector<Block> Chunk::getNeighbors(const Block& target) {
     std::vector<Block> neighbors;
 
     auto it = std::find_if(

@@ -38,7 +38,7 @@ target_link_libraries(Cerraria PRIVATE
     Freetype::Freetype
 )
 
-target_compile_options(Cerraria PRIVATE)
+target_compile_options(Cerraria PRIVATE -O3)
 
 target_compile_definitions(Cerraria PRIVATE ASSETS_DIR="${CMAKE_SOURCE_DIR}/assets/")
 

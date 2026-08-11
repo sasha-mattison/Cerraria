@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
-#include <list>
 
 struct BlockVertex {
     glm::vec2 position;
@@ -39,7 +38,7 @@ private:
     void drawSetup();
     void buildMesh();
 
-    std::vector<Block> getNeighbors(const Block& target, const std::vector<Block>& blocks);
+    std::vector<Block> getNeighbors(const Block& target);
 
 public:
     Chunk(glm::vec2 pos);

@@ -22,7 +22,7 @@ class Player {
 
     private:
         std::string spritePath = std::string(ASSETS_DIR) + "textures/image.png";
-        Mesh sprite = Mesh(spritePath);
+        Mesh sprite = Mesh(Texture::PLAYER);
         glm::vec2 position;
         glm::vec2 velocity;
         glm::vec2 acceleration;

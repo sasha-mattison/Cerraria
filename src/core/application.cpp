@@ -9,6 +9,7 @@ void Application::framebufferSizeCallback(GLFWwindow* window, int width, int hei
 
     glViewport(0, 0, width, height);
 
+    //Fixes squishing from the window and shii
     app->camera.setProjection(width, height);
     app->camera.applyProjection(app->shader);
     app->aspectRatio = static_cast<float>(width)/height;
