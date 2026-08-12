@@ -17,15 +17,17 @@ A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 
 ## Features
 
-There is a window
+- There is a window
+- Controllable player
+- You see stuff in the window
 
 ---
 
-## Tech Stack & Dependencies
+## Tech Stack and Dependencies
 
 - **Language:** C++17 or higher
-- **Build System:** CMake (>= 3.15)
-- **Compiler:** `gcc` (>= 9), `clang` (>= 10), or MSVC (Visual Studio 2019+)
+- **Build System:** CMake 3.15 or higher
+- **Compiler:** `gcc`  9+, `clang` 10+, or MSVC
 
 ---
 
@@ -38,6 +40,7 @@ There is a window
 ```bash
 sudo apt update
 sudo apt install build-essential cmake libraylib-dev libx11-dev libxi-dev libgl1-mesa-dev
+git clone https://github.com/sasha-mattison/Cerraria.git
 ```
 
 #### MacOS 
@@ -45,3 +48,5 @@ sudo apt install build-essential cmake libraylib-dev libx11-dev libxi-dev libgl1
 ```bash
 brew update && upgrade
 brew install glm freetype glfw assimp cmake
+git clone https://github.com/sasha-mattison/Cerraria.git
+```
