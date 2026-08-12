@@ -52,6 +52,38 @@ Chunk::Chunk(glm::vec2 pos) : position(pos) {
     drawSetup();
 }
 
+Chunk::Chunk(Chunk&& other) noexcept
+    : VAO(other.VAO),
+      VBO(other.VBO),
+      texPath(std::move(other.texPath)),
+      mesh(std::move(other.mesh)),
+      blocks(std::move(other.blocks)),
+      meshData(std::move(other.meshData)),
+      position(other.position)
+{
+    other.VAO = 0;
+    other.VBO = 0;
+}
+
+Chunk& Chunk::operator=(Chunk&& other) noexcept {
+    if (this != &other) {
+        glDeleteBuffers(1, &VBO);
+        glDeleteVertexArrays(1, &VAO);
+
+        VAO = other.VAO;
+        VBO = other.VBO;
+        texPath = std::move(other.texPath);
+        mesh = std::move(other.mesh);
+        blocks = std::move(other.blocks);
+        meshData = std::move(other.meshData);
+        position = other.position;
+
+        other.VAO = 0;
+        other.VBO = 0;
+    }
+    return *this;
+}
+
 Chunk::~Chunk() {
     glDeleteBuffers(1, &VBO);
     glDeleteVertexArrays(1, &VAO);
@@ -61,8 +93,8 @@ void Chunk::initChunk() {
     for (int i = 0; i < CHUNK_SIZE; i++) {
         for (int j = 0; j < CHUNK_SIZE; j++) {
             glm::vec2 blockPos(
-                position.x - j * BLOCK_SIZE + (CHUNK_SIZE * BLOCK_SIZE) / 2.0f,
-                position.y - i * BLOCK_SIZE + (CHUNK_SIZE * BLOCK_SIZE) / 2.0f);
+                position.x + j * BLOCK_SIZE - (CHUNK_SIZE * BLOCK_SIZE) / 2.0f,
+                position.y + i * BLOCK_SIZE - (CHUNK_SIZE * BLOCK_SIZE) / 2.0f);
             blocks.emplace_back(blockPos);
         }
     }
@@ -91,6 +123,20 @@ void Chunk::drawSetup() {
     glEnableVertexAttribArray(1);
 
     glBindVertexArray(0);
+}
+
+Block Chunk::getBlockAt(glm::vec2 point) {
+    
+}
+
+Block Chunk::removeBlockAt(glm::vec2 point) {
+
+}
+
+float Chunk::getGroundLevel() {
+    float groundLevel = position.y - (BLOCK_SIZE * (CHUNK_SIZE / 2));
+    std::cout << position.y << "\n";
+    return groundLevel;
 }
 
 void Chunk::draw() {

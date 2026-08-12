@@ -23,6 +23,13 @@ vertices.push_back(Vertex(glm::vec2(200.0f, 200.0f), glm::vec2(1.0f, 1.0f)));
 }
 
 void Player::update(float tick) {
+    if (position.y <= groundLevel && velocity.y <= 0.0f) {
+        position.y = groundLevel;
+        velocity.y = 0.0f;
+        isGrounded = true;
+    } else {
+        isGrounded = false;
+    }
     if (applyGravity && !isGrounded) {
         acceleration.y = GRAVITY/20000.0f;
         velocity += acceleration * tick;
@@ -48,13 +55,21 @@ void Player::input(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
         position.x += 1.0f;
     }
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        position.y += 1.0f;
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && isGrounded) {
+        velocity.y += 1.0f;
+        isGrounded = false;
     }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    {
-        position.y -= 1.0f;
+    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
+        std::cout << "x: " << position.x << " y: " << position.y << "\n";
     }
+    // if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    // {
+    //     position.y -= 1.0f;
+    // }
+
+    double cursorX, cursorY;
+    glfwGetCursorPos(window, &cursorX, &cursorY);
+    std::cout << "x: " << cursorX << " y: " << cursorY << "\n";
 }
 
 
@@ -76,12 +91,16 @@ void Player::updateVertices() {
     }
 }
 
+void Player::setGround(float gl) {
+    groundLevel = gl;
+} 
+
 void Player::draw() {
     updateVertices();
     glBindTexture(GL_TEXTURE_2D, sprite.getTexture());
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_DYNAMIC_DRAW);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, position));
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, texCoord));

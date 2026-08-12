@@ -1,6 +1,6 @@
 #pragma once
 
-static const float GRAVITY= -9.81;
+static const float GRAVITY= -981.0f;
 
 static const float BLOCK_SIZE = 10.0f;
 static const int CHUNK_SIZE = 10;

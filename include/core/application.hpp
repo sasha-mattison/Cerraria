@@ -10,17 +10,31 @@
 #include <sstream>
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
+#include "core/chunk.hpp"
 
-struct World {
+struct ChunkManager {
 
+    enum Direction {
+        LEFT,
+        RIGHT
+    };
+
+    std::vector<Chunk> chunkList;
+    float yPosition;
+    glm::vec2 worldOrigin;
+    ChunkManager(glm::vec2 origin);
+    void newChunks(int amount);
 };
 
 class Application {
 
     private:
         GLFWwindow* window;
-        int width = 800;
-        int height = 800;
+        const int initialWidth = 800;
+        const int initialHeight = 600;
+        int width = initialWidth;
+        int height = initialHeight;
+        float scale = 1;
         float aspectRatio = static_cast<float>(width)/height;
         void applyScaling();
         std::string name = "Cerraria";

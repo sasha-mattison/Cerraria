@@ -38,11 +38,20 @@ private:
     void drawSetup();
     void buildMesh();
 
+    Block getBlockAt(glm::vec2 point);
+    
     std::vector<Block> getNeighbors(const Block& target);
 
 public:
     Chunk(glm::vec2 pos);
+    Chunk(const Chunk&) = delete;
+    Chunk& operator=(const Chunk&) = delete;
+    Chunk(Chunk&& other) noexcept;
+    Chunk& operator=(Chunk&& other) noexcept;
     ~Chunk();
+
+    Block removeBlockAt(glm::vec2 point);
+    float getGroundLevel();
 
     void draw();
 };

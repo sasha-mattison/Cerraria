@@ -24,5 +24,4 @@ class Mesh {
         Mesh(Texture type);
         Mesh(std::string path);
         GLuint getTexture();
-        // "assets/textues/image.png"
 };

@@ -1,7 +1,29 @@
 #include "core/application.hpp"
 
 #include "core/player.hpp"
-#include "core/chunk.hpp"
+
+ChunkManager::ChunkManager(glm::vec2 origin) : worldOrigin(origin) {}
+
+void ChunkManager::newChunks(int amount) {
+    for (int i = 0; i < amount; i++) {
+        int index = chunkList.size();
+        int side = index % 2;
+        int multiplier = (index + 1) / 2;
+
+        switch (side) {
+            case 0: {
+                Chunk chunk(glm::vec2(worldOrigin.x + multiplier * CHUNK_SIZE * BLOCK_SIZE, worldOrigin.y));
+                chunkList.push_back(std::move(chunk));
+            }
+            break;
+            case 1: {
+                Chunk chunk(glm::vec2(worldOrigin.x - multiplier * CHUNK_SIZE * BLOCK_SIZE, worldOrigin.y));
+                chunkList.push_back(std::move(chunk));
+            }
+            break;
+        }
+    }
+}
 
 void Application::framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     Application* app =
@@ -77,9 +99,14 @@ void Application::cleanup() {
 void Application::run(){
     init();
 
-    Chunk chunk(glm::vec2(100.0f, 100.0f));
+    // Chunk chunk(glm::vec2(100.0f, 100.0f));
+    // Chunk chunk2(glm::vec2(200.0f, 100.0f));
+    ChunkManager chunkManager(glm::vec2(300.0f, 100.0f));
+    chunkManager.newChunks(500);
+
 
     Player player(glm::vec2(0.0f, 0.0f));
+    player.setGround(chunkManager.chunkList[0].getGroundLevel());
 
     camera.applyProjection(shader);
 
@@ -94,7 +121,11 @@ void Application::run(){
         player.input(window);
         player.draw();
 
-        chunk.draw();
+        // chunk.draw();
+        // chunk2.draw();
+
+        for (Chunk& c : chunkManager.chunkList)
+            c.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

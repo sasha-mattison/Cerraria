@@ -26,8 +26,9 @@ class Player {
         glm::vec2 position;
         glm::vec2 velocity;
         glm::vec2 acceleration;
-        bool applyGravity = false;
-        bool isGrounded = true;
+        bool applyGravity = true;
+        bool isGrounded = false;
+        float groundLevel = -100.0f;
         float size = 0.5f;
 
         std::vector<Vertex> vertices;
@@ -42,6 +43,7 @@ class Player {
         void update(float tick);
         void input(GLFWwindow* window);
         glm::vec2 getPos();
+        void setGround(float gl);
         void draw();
 
 };
