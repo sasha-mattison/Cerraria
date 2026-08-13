@@ -56,25 +56,27 @@ void Player::input(GLFWwindow* window) {
         position.x += 1.0f;
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && isGrounded) {
-        velocity.y += 1.0f;
+        velocity.y += 2.0f;
         isGrounded = false;
     }
     if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
         std::cout << "x: " << position.x << " y: " << position.y << "\n";
     }
-    // if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    // {
-    //     position.y -= 1.0f;
-    // }
-
-    double cursorX, cursorY;
-    glfwGetCursorPos(window, &cursorX, &cursorY);
-    std::cout << "x: " << cursorX << " y: " << cursorY << "\n";
+    
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+        glfwGetCursorPos(window, &cursorX, &cursorY);
+    }
 }
 
 
 glm::vec2 Player::getPos() {
     return position;
+}
+
+glm::vec2 Player::getCursorPos(GLFWwindow* window) {
+    int height;
+    glfwGetWindowSize(window, nullptr, &height);
+    return glm::vec2(cursorX, height - cursorY);
 }
 
 void Player::drawSetup() {

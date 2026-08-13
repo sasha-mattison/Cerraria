@@ -108,8 +108,8 @@ void Chunk::buildMesh() {
 }
 
 void Chunk::drawSetup() {
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+    if (VAO == 0) glGenVertexArrays(1, &VAO);
+    if (VBO == 0) glGenBuffers(1, &VBO);
 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -125,12 +125,26 @@ void Chunk::drawSetup() {
     glBindVertexArray(0);
 }
 
-Block Chunk::getBlockAt(glm::vec2 point) {
-    
+Block* Chunk::getBlockAt(glm::vec2 point) {
+    for (Block& b : blocks) {
+        if (point.x >= b.position.x && point.x < b.position.x + BLOCK_SIZE &&
+            point.y >= b.position.y && point.y < b.position.y + BLOCK_SIZE) {
+            return &b;
+        }
+    }
+    return nullptr;
 }
 
-Block Chunk::removeBlockAt(glm::vec2 point) {
+void Chunk::removeBlockAt(glm::vec2 point) {
+    Block* target = getBlockAt(point);
+    if (!target)
+        return;
 
+    auto it = blocks.begin() + (target - &blocks[0]);
+    blocks.erase(it);
+    //std::cout << "removed\n";
+    buildMesh(); 
+    drawSetup();   
 }
 
 float Chunk::getGroundLevel() {

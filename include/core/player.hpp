@@ -16,8 +16,6 @@ struct Vertex {
     void updateVertex(glm::vec2 pos);
 };
 
-
-
 class Player {
 
     private:
@@ -31,6 +29,9 @@ class Player {
         float groundLevel = -100.0f;
         float size = 0.5f;
 
+        double cursorX;
+        double cursorY;
+
         std::vector<Vertex> vertices;
         GLuint VAO;
         GLuint VBO;
@@ -43,8 +44,10 @@ class Player {
         void update(float tick);
         void input(GLFWwindow* window);
         glm::vec2 getPos();
+        glm::vec2 getCursorPos(GLFWwindow* window);
         void setGround(float gl);
         void draw();
+
 
 };
 

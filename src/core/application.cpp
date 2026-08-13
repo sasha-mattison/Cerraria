@@ -25,6 +25,26 @@ void ChunkManager::newChunks(int amount) {
     }
 }
 
+Chunk* ChunkManager::getChunkAt(const glm::vec2& worldPos) {
+    const float chunkWidth = CHUNK_SIZE * BLOCK_SIZE;
+
+    int offset = static_cast<int>(std::floor((worldPos.x - worldOrigin.x + chunkWidth / 2.0f) / chunkWidth));
+
+    size_t index;
+    if (offset == 0) {
+        index = 0;
+    } else if (offset > 0) {
+        index = static_cast<size_t>(2 * offset);
+    } else {
+        index = static_cast<size_t>(2 * (-offset) - 1);
+    }
+
+    if (index >= chunkList.size())
+        return nullptr;
+
+    return &chunkList[index];
+}
+
 void Application::framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     Application* app =
         static_cast<Application*>(glfwGetWindowUserPointer(window));
@@ -99,14 +119,13 @@ void Application::cleanup() {
 void Application::run(){
     init();
 
-    // Chunk chunk(glm::vec2(100.0f, 100.0f));
-    // Chunk chunk2(glm::vec2(200.0f, 100.0f));
     ChunkManager chunkManager(glm::vec2(300.0f, 100.0f));
-    chunkManager.newChunks(500);
+    chunkManager.newChunks(11);
 
 
     Player player(glm::vec2(0.0f, 0.0f));
-    player.setGround(chunkManager.chunkList[0].getGroundLevel());
+    glm::vec2 playerCursorPos = player.getCursorPos(window);
+    player.setGround(chunkManager.chunkList[0].getGroundLevel());  //yikes
 
     camera.applyProjection(shader);
 
@@ -120,12 +139,16 @@ void Application::run(){
         player.update(1);
         player.input(window);
         player.draw();
+        playerCursorPos = player.getCursorPos(window);
 
-        // chunk.draw();
-        // chunk2.draw();
 
-        for (Chunk& c : chunkManager.chunkList)
+        Chunk* target = chunkManager.getChunkAt(playerCursorPos);
+        if (target && glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+            target->removeBlockAt(playerCursorPos);
+
+        for (Chunk& c : chunkManager.chunkList) {
             c.draw();
+        }
 
         glfwSwapBuffers(window);
         glfwPollEvents();
