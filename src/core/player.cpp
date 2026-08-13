@@ -77,6 +77,19 @@ glm::vec2 Player::getCursorPos(GLFWwindow* window) {
     int height;
     glfwGetWindowSize(window, nullptr, &height);
     return glm::vec2(cursorX, height - cursorY);
+
+    /* 
+    cursor coords:                window coords:
+   
+    -y-axis                         +y-axis
+    |                               |
+    |                               |
+    |                               |
+    |                               |
+    +--------- +x-axis              +--------- +x-axis
+
+    y-axis is flipped between cursor coords and window so you have to flip them yourself
+    */
 }
 
 void Player::drawSetup() {
