@@ -50,3 +50,7 @@ brew update && upgrade
 brew install glm freetype glfw assimp cmake
 git clone https://github.com/sasha-mattison/Cerraria.git
 ```
+
+#### Windows
+
+idk should work with the right dependancies good luck tho gng
