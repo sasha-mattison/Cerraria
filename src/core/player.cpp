@@ -9,6 +9,21 @@ void Vertex::updateVertex(glm::vec2 pos) {
     position.y = initialPos.y+ pos.y;
 }
 
+Inventory::Inventory() {
+
+    int hotbarSlots = 4; //Pls don't make more than 10
+
+    Block b = Block(glm::vec2(0, 0));
+    for (int i = 0; i < hotbarSlots; i++) {
+        hotbar.emplace_back(b, 0);
+        
+    }
+
+}
+
+void Inventory::modifyHotbar(int slot, Block block, int amount) {
+}
+
 Player::Player(glm::vec2 pos) : position(pos), velocity(0), acceleration(0) {
 
 vertices.push_back(Vertex(glm::vec2(100.0f, 100.0f), glm::vec2(0.0f, 0.0f)));

@@ -15,11 +15,22 @@ struct BlockVertex {
         : position(pos), initialPos(pos), texCoord(texCoord) {}
 };
 
+enum class BlockType {
+    GRASS,
+    DIRT,
+    STONE,
+    AIR
+};
+
 struct Block {
     glm::vec2 position;
     std::vector<BlockVertex> vertices;
+    Texture texType = Texture::GRASS;
+    Mesh mesh = Mesh(texType);
 
+    Block(glm::vec2 pos, BlockType type);
     Block(glm::vec2 pos);
+    Block();
 };
 
 class Chunk {
@@ -27,8 +38,8 @@ private:
     GLuint VAO = 0;
     GLuint VBO = 0;
 
-    std::string texPath = std::string(ASSETS_DIR) + "textures/image.png";
-    Mesh mesh = Mesh(texPath);
+    Texture texType = Texture::CRATE;
+    Mesh mesh = Mesh(texType);
 
     std::vector<Block> blocks;
     std::vector<BlockVertex> meshData;

@@ -9,7 +9,8 @@
 
 enum class Texture {
     PLAYER,
-    CRATE
+    CRATE,
+    GRASS
 };
 
 class Mesh {

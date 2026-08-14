@@ -1,12 +1,14 @@
 #pragma once
 
 #include "core/mesh.hpp"
-
+#include "core/chunk.hpp"
 
 #include <glm/glm.hpp>
 #include "core/constants.hpp"
 #include <algorithm>
 #include <vector>
+#include <map>
+#include <memory>
 
 struct Vertex {
     Vertex(glm::vec2 pos, glm::vec2 texCoord);
@@ -14,6 +16,20 @@ struct Vertex {
     glm::vec2 position;
     glm::vec2 texCoord;
     void updateVertex(glm::vec2 pos);
+};
+
+struct InvData {
+    Block block;
+    int count;
+
+    InvData() = default;
+    InvData(const Block& b, int c) : block(b), count(c) {}
+};
+
+struct Inventory {
+    Inventory();
+    std::vector<InvData> hotbar;
+    void modifyHotbar(int slot, Block block, int amount);
 };
 
 class Player {

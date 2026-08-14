@@ -1,6 +1,18 @@
 #include "core/chunk.hpp"
 #include "core/constants.hpp"
 
+Block::Block(glm::vec2 pos, BlockType type) {
+    vertices.emplace_back(position, glm::vec2(0.0f, 0.0f));
+    vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y), glm::vec2(1.0f, 0.0f));
+    vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
+
+    vertices.emplace_back(position, glm::vec2(0.0f, 0.0f));
+    vertices.emplace_back(glm::vec2(position.x, position.y + BLOCK_SIZE), glm::vec2(0.0f, 1.0f));
+    vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
+
+    
+}
+
 Block::Block(glm::vec2 pos) : position(pos) {
     vertices.emplace_back(position, glm::vec2(0.0f, 0.0f));
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y), glm::vec2(1.0f, 0.0f));
@@ -9,6 +21,10 @@ Block::Block(glm::vec2 pos) : position(pos) {
     vertices.emplace_back(position, glm::vec2(0.0f, 0.0f));
     vertices.emplace_back(glm::vec2(position.x, position.y + BLOCK_SIZE), glm::vec2(0.0f, 1.0f));
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
+}
+
+Block::Block() {
+
 }
 
 std::vector<Block> Chunk::getNeighbors(const Block& target) {
@@ -55,7 +71,7 @@ Chunk::Chunk(glm::vec2 pos) : position(pos) {
 Chunk::Chunk(Chunk&& other) noexcept
     : VAO(other.VAO),
       VBO(other.VBO),
-      texPath(std::move(other.texPath)),
+      texType(std::move(other.texType)),
       mesh(std::move(other.mesh)),
       blocks(std::move(other.blocks)),
       meshData(std::move(other.meshData)),
@@ -72,7 +88,7 @@ Chunk& Chunk::operator=(Chunk&& other) noexcept {
 
         VAO = other.VAO;
         VBO = other.VBO;
-        texPath = std::move(other.texPath);
+        texType = std::move(other.texType);
         mesh = std::move(other.mesh);
         blocks = std::move(other.blocks);
         meshData = std::move(other.meshData);
