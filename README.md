@@ -22,6 +22,8 @@ A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 - You see stuff in the window
 - Place and remove blocks
 
+- Don't run it in build folder. Run it from source folder. If you run it from build folder most things will break
+
 ---
 
 ## Tech Stack and Dependencies
