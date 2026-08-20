@@ -2,7 +2,7 @@
 
 A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 
-![C++](https://img.shields.io/badge/C%2B%2B-17%2F20-blue.svg)
+![C++](https://img.shields.io/badge/C%2B%2B-23%2F26-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg)
 
