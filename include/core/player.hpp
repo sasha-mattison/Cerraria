@@ -70,6 +70,7 @@ class Player {
         MouseButton getLastMousePress();
         void setGround(float gl);
         void draw();
+        BlockType getActiveBlock();
 
 
 };

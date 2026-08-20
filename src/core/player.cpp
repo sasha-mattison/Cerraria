@@ -21,8 +21,9 @@ Inventory::Inventory() {
 void Inventory::setActiveSlot(int slot) {
     activeSlot = slot;
 
-    if (slot > hotbar.size()) activeSlot = hotbar.size();
+    if (slot > hotbar.size()) activeSlot = hotbar.size() - 1;
     if (slot < 0) activeSlot = 0;
+    std::cout << activeSlot << "\n";
 }
 
 Player::Player(glm::vec2 pos, float size, float scale) : position(pos), velocity(0), acceleration(0) {
@@ -103,7 +104,7 @@ void Player::input(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS) {
         inventory.setActiveSlot(inventory.activeSlot + 1);
     }
-        if (glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS) {
+        if (glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS) {
         inventory.setActiveSlot(inventory.activeSlot - 1);
     }
 }
@@ -115,6 +116,10 @@ glm::vec2 Player::getPos() {
 
 MouseButton Player::getLastMousePress() {
     return lastPress;
+}
+
+BlockType Player::getActiveBlock() {
+    return inventory.hotbar[inventory.activeSlot];
 }
 
 

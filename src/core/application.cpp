@@ -149,7 +149,7 @@ void Application::run(){
             c.draw();
         }
         if (player.getLastMousePress() == MouseButton::RIGHT) {
-            target->placeBlockAt(playerCursorPos, BlockType::DIRT);
+            target->placeBlockAt(playerCursorPos, player.getActiveBlock());
         }
 
         glfwSwapBuffers(window);
