@@ -1,7 +1,7 @@
 #include "core/chunk.hpp"
 #include "core/constants.hpp"
 
-Block::Block(glm::vec2 pos, BlockType type) {
+Block::Block(glm::vec2 pos, BlockType type) : position(pos){
     vertices.emplace_back(position, glm::vec2(0.0f, 0.0f));
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y), glm::vec2(1.0f, 0.0f));
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
@@ -23,9 +23,7 @@ Block::Block(glm::vec2 pos) : position(pos) {
     vertices.emplace_back(glm::vec2(position.x + BLOCK_SIZE, position.y + BLOCK_SIZE), glm::vec2(1.0f, 1.0f));
 }
 
-Block::Block() {
-
-}
+Block::Block() {}
 
 std::vector<Block> Chunk::getNeighbors(const Block& target) {
     std::vector<Block> neighbors;
@@ -142,7 +140,8 @@ void Chunk::drawSetup() {
 }
 
 Block* Chunk::getBlockAt(glm::vec2 point) {
-    for (Block& b : blocks) {
+    for (auto it = blocks.rbegin(); it != blocks.rend(); ++it) {
+        Block& b = *it;
         if (point.x >= b.position.x && point.x < b.position.x + BLOCK_SIZE &&
             point.y >= b.position.y && point.y < b.position.y + BLOCK_SIZE) {
             return &b;
@@ -158,13 +157,22 @@ void Chunk::removeBlockAt(glm::vec2 point) {
 
     auto it = blocks.begin() + (target - &blocks[0]);
     blocks.erase(it);
-    //std::cout << "removed\n";
     buildMesh(); 
     drawSetup();   
 }
 
+void Chunk::placeBlockAt(glm::vec2 point, BlockType type) {
+
+    glm::vec2 adjustedPos(point.x - (BLOCK_SIZE / 2), point.y - (BLOCK_SIZE / 2));
+    Block newBlock = Block(adjustedPos, type);
+    blocks.push_back(newBlock);
+    buildMesh();
+    drawSetup();
+
+}
+
 float Chunk::getGroundLevel() {
-    float groundLevel = position.y - (BLOCK_SIZE * (CHUNK_SIZE / 2));
+    float groundLevel = position.y + (BLOCK_SIZE * (CHUNK_SIZE / 2));
     std::cout << position.y << "\n";
     return groundLevel;
 }

@@ -19,14 +19,15 @@ enum class BlockType {
     GRASS,
     DIRT,
     STONE,
-    AIR
+    AIR,
+
+    end
 };
 
 struct Block {
     glm::vec2 position;
     std::vector<BlockVertex> vertices;
-    Texture texType = Texture::GRASS;
-    Mesh mesh = Mesh(texType);
+    BlockType type = BlockType::GRASS;
 
     Block(glm::vec2 pos, BlockType type);
     Block(glm::vec2 pos);
@@ -62,6 +63,7 @@ public:
     ~Chunk();
 
     void removeBlockAt(glm::vec2 point);
+    void placeBlockAt(glm::vec2 point, BlockType type);
     float getGroundLevel();
 
     void draw();

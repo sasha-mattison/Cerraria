@@ -18,18 +18,19 @@ struct Vertex {
     void updateVertex(glm::vec2 pos);
 };
 
-struct InvData {
-    Block block;
-    int count;
-
-    InvData() = default;
-    InvData(const Block& b, int c) : block(b), count(c) {}
+enum class MouseButton {
+    LEFT,
+    RIGHT,
+    NONE
 };
 
 struct Inventory {
+    std::map<int, BlockType> hotbar;
+    int activeSlot = 0;
+
     Inventory();
-    std::vector<InvData> hotbar;
-    void modifyHotbar(int slot, Block block, int amount);
+    void setActiveSlot(int slot);
+
 };
 
 class Player {
@@ -38,15 +39,20 @@ class Player {
         std::string spritePath = std::string(ASSETS_DIR) + "textures/image.png";
         Mesh sprite = Mesh(Texture::PLAYER);
         glm::vec2 position;
+        glm::vec2 lastPosition;
         glm::vec2 velocity;
         glm::vec2 acceleration;
         bool applyGravity = true;
         bool isGrounded = false;
         float groundLevel = -100.0f;
-        float size = 0.5f;
+        float scale = 0.5f;
 
         double cursorX;
         double cursorY;
+
+        MouseButton lastPress;
+
+        Inventory inventory;
 
         std::vector<Vertex> vertices;
         GLuint VAO;
@@ -56,11 +62,12 @@ class Player {
         void updateVertices();
 
     public:
-        Player(glm::vec2 pos);
+        Player(glm::vec2 pos, float scale, float size);
         void update(float tick);
         void input(GLFWwindow* window);
         glm::vec2 getPos();
         glm::vec2 getCursorPos(GLFWwindow* window);
+        MouseButton getLastMousePress();
         void setGround(float gl);
         void draw();
 

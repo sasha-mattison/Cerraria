@@ -11,33 +11,41 @@ void Vertex::updateVertex(glm::vec2 pos) {
 
 Inventory::Inventory() {
 
-    int hotbarSlots = 4; //Pls don't make more than 10
+    int hotbarSlots = static_cast<int>(BlockType::end);
 
-    Block b = Block(glm::vec2(0, 0));
     for (int i = 0; i < hotbarSlots; i++) {
-        hotbar.emplace_back(b, 0);
-        
+        hotbar.emplace(i, static_cast<BlockType>(i));
     }
-
 }
 
-void Inventory::modifyHotbar(int slot, Block block, int amount) {
+void Inventory::setActiveSlot(int slot) {
+    activeSlot = slot;
+
+    if (slot > hotbar.size()) activeSlot = hotbar.size();
+    if (slot < 0) activeSlot = 0;
 }
 
-Player::Player(glm::vec2 pos) : position(pos), velocity(0), acceleration(0) {
+Player::Player(glm::vec2 pos, float size, float scale) : position(pos), velocity(0), acceleration(0) {
 
-vertices.push_back(Vertex(glm::vec2(100.0f, 100.0f), glm::vec2(0.0f, 0.0f)));
-vertices.push_back(Vertex(glm::vec2(200.0f, 100.0f), glm::vec2(1.0f, 0.0f)));
-vertices.push_back(Vertex(glm::vec2(200.0f, 200.0f), glm::vec2(1.0f, 1.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x, pos.y), glm::vec2(0.0f, 0.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x + size, pos.y), glm::vec2(1.0f, 0.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x + size, pos.y + size), glm::vec2(1.0f, 1.0f)));
 
-vertices.push_back(Vertex(glm::vec2(100.0f, 100.0f), glm::vec2(0.0f, 0.0f)));
-vertices.push_back(Vertex(glm::vec2(100.0f, 200.0f), glm::vec2(0.0f, 1.0f)));
-vertices.push_back(Vertex(glm::vec2(200.0f, 200.0f), glm::vec2(1.0f, 1.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x, pos.y), glm::vec2(0.0f, 0.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x, pos.y + size), glm::vec2(0.0f, 1.0f)));
+    vertices.push_back(Vertex(glm::vec2(pos.x + size, pos.y + size), glm::vec2(1.0f, 1.0f)));
+
+    for (Vertex& v : vertices) {
+        v.initialPos *= scale;
+        v.position *= scale;
+        v.texCoord *= scale;
+    }
 
     drawSetup();
 }
 
 void Player::update(float tick) {
+    lastPosition = position;
     if (position.y <= groundLevel && velocity.y <= 0.0f) {
         position.y = groundLevel;
         velocity.y = 0.0f;
@@ -64,6 +72,7 @@ void Player::update(float tick) {
 }
 
 void Player::input(GLFWwindow* window) {
+    //keys
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
         position.x -= 1.0f;
     }
@@ -78,8 +87,24 @@ void Player::input(GLFWwindow* window) {
         std::cout << "x: " << position.x << " y: " << position.y << "\n";
     }
     
+    //clicks
+    lastPress = MouseButton::NONE;
+
     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
         glfwGetCursorPos(window, &cursorX, &cursorY);
+        lastPress = MouseButton::LEFT;
+    }
+    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+        glfwGetCursorPos(window, &cursorX, &cursorY);
+        lastPress = MouseButton::RIGHT;
+    }
+
+    //inv stuff
+    if (glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS) {
+        inventory.setActiveSlot(inventory.activeSlot + 1);
+    }
+        if (glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS) {
+        inventory.setActiveSlot(inventory.activeSlot - 1);
     }
 }
 
@@ -87,6 +112,11 @@ void Player::input(GLFWwindow* window) {
 glm::vec2 Player::getPos() {
     return position;
 }
+
+MouseButton Player::getLastMousePress() {
+    return lastPress;
+}
+
 
 glm::vec2 Player::getCursorPos(GLFWwindow* window) {
     int height;
@@ -126,14 +156,24 @@ void Player::setGround(float gl) {
 } 
 
 void Player::draw() {
-    updateVertices();
+
+    GLuint drawType;
+    if (position != lastPosition) {
+        drawType = GL_DYNAMIC_DRAW; 
+        updateVertices();
+    }
+    else {
+        drawType = GL_STATIC_DRAW; 
+    }
+    
     glBindTexture(GL_TEXTURE_2D, sprite.getTexture());
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), drawType);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, position));
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, texCoord));
     glEnableVertexAttribArray(1);
     glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 }
+

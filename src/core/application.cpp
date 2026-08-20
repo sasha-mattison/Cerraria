@@ -123,9 +123,9 @@ void Application::run(){
     chunkManager.newChunks(11);
 
 
-    Player player(glm::vec2(0.0f, 0.0f));
+    Player player(glm::vec2(0.0f, 0.0f), 100.0f, 0.5f);
     glm::vec2 playerCursorPos = player.getCursorPos(window);
-    player.setGround(chunkManager.chunkList[0].getGroundLevel());  //yikes
+    player.setGround(chunkManager.chunkList[0].getGroundLevel() - player.getPos().y);  //yikes
 
     camera.applyProjection(shader);
 
@@ -145,9 +145,11 @@ void Application::run(){
         Chunk* target = chunkManager.getChunkAt(playerCursorPos);
         if (target && glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
             target->removeBlockAt(playerCursorPos);
-
         for (Chunk& c : chunkManager.chunkList) {
             c.draw();
+        }
+        if (player.getLastMousePress() == MouseButton::RIGHT) {
+            target->placeBlockAt(playerCursorPos, BlockType::DIRT);
         }
 
         glfwSwapBuffers(window);
