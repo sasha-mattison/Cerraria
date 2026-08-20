@@ -20,12 +20,13 @@ A 2D sandbox game implementation inspired by **Terraria**, written in **C++**.
 - There is a window
 - Controllable player
 - You see stuff in the window
+- Place and remove blocks
 
 ---
 
 ## Tech Stack and Dependencies
 
-- **Language:** C++17 or higher
+- **Language:** C++17 or higher (it says C++ 26 but it only uses C++ 17 features)
 - **Build System:** CMake 3.15 or higher
 - **Compiler:** `gcc`  9+, `clang` 10+, or MSVC
 
